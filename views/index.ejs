@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      <% if (title) { %>
+        <%= title %>
+      <% } %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>
+      <% if (title) { %>
+        <%= title %>
+      <% } %>
+    </h1>
+    <p>
+      Welcome to
+      <% if (title) { %>
+        <%= title %>
+      <% } %>
+    </p>
+  </body>
+</html>
