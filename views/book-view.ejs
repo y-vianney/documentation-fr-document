@@ -31,11 +31,13 @@
                             <h4><%= data.author %></h4>
                         </div>
                     <% } %>
-    
-                    <div>
-                        <span>Date de publication</span>
-                        <h4>15 Septembre 2024</h4>
-                    </div>
+
+                    <% if (data.publicationDate) { %>
+                        <div>
+                            <span>Date de publication</span>
+                            <h4><%= data.publicationDate %></h4>
+                        </div>
+                    <% } %>
                 </div>
     
                 <% if (data.link) { %>
