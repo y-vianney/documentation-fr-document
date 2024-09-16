@@ -1,12 +1,11 @@
+require('dotenv').config()
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+
 const port = process.env.PORT || 3000;
-
-// const indexRouter = require('./routes/index');
-
 const app = express();
 
 // view engine setup
@@ -27,7 +26,7 @@ app.get('/', function(req, res, next) {
 app.get('/view-document', (req, res) => {
   // console.log(Object.entries(req.body));
   const data = req.query;
-  console.log(data)
+  // console.log(data)
 
   let parsedData;
   if (typeof data === 'string') {
@@ -61,8 +60,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// module.exports = app;
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
