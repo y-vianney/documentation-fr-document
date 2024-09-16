@@ -26,7 +26,7 @@ button {
   background: #1B72A8;
   border-radius: 25px;
   border: none;
-  padding: .7rem 2.5rem;
+  padding: 1rem 2.5rem;
   color: #ffff;
   font-weight: 600;
   cursor: pointer;
@@ -114,4 +114,8 @@ a.source-link:hover .icon {
   width: fit-content;
   padding: 1rem;
   transition: width .3s ease-out;
+}
+
+.img-container {
+  box-shadow: 0 0 10px 5px #4444;
 }
