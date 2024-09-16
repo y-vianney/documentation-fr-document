@@ -14,7 +14,7 @@
                 <%= data.title %>
             <% } %>
         </h1>
-    
+
         <div style="display: flex; justify-content: space-between; gap: 1rem; width: 100%">
             <div>
                 <div class="box">
@@ -40,7 +40,7 @@
     
                 <% if (data.link) { %>
                     <a href="<%= data.link %>" target="_blank">
-                        <button>
+                        <button class="upper">
                             Télécharger
                         </button>
                     </a>
@@ -58,7 +58,8 @@
     
             <% if (data.coverImage) { %>
                 <div>
-                    <img src="<%= data.coverImage %>" >
+                    <img src="<%= data.coverImage %>" id="cover" >
+                    <canvas id="canvas" style="display:none;"></canvas>
                 </div>
             <% } %>
         </div>

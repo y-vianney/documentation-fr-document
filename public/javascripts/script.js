@@ -32,3 +32,6 @@ action_buttons.forEach(button => {
         }
     })
 })
+
+
+const img = document.getElementById('cover');
