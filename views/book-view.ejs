@@ -7,10 +7,10 @@
     <link rel='stylesheet' href='/stylesheets/style.css'/>
 </head>
 <body>
-<% if (data && data.length > 0) { %>
+<% if (data) { %>
     <div class="main">
         <h1 class="upper font-bold">
-            <% if (data && data.title) { %>
+            <% if (data.title) { %>
                 <%= data.title %>
             <% } %>
         </h1>
@@ -18,14 +18,14 @@
         <div style="display: flex; justify-content: space-between; gap: 1rem; width: 100%">
             <div>
                 <div class="box">
-                    <% if (data && data.type) { %>
+                    <% if (data.type) { %>
                         <div>
                             <span>Type</span>
                             <h4><%= data.type %></h4>
                         </div>
                     <% } %>
     
-                    <% if (data && data.author) { %>
+                    <% if (data.author) { %>
                         <div>
                             <span>Auteur</span>
                             <h4><%= data.author %></h4>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
     
-                <% if (data && data.link) { %>
+                <% if (data.link) { %>
                     <a href="<%= data.link %>" target="_blank">
                         <button>
                             Télécharger
@@ -56,7 +56,7 @@
                 </span>
             </div>
     
-            <% if (data && data.coverImage) { %>
+            <% if (data.coverImage) { %>
                 <div>
                     <img src="<%= data.coverImage %>" >
                 </div>
@@ -76,7 +76,7 @@
     
             <div class="content">
                 <div id="content-summary">
-                    <% if (data && data.summary) { %>
+                    <% if (data.summary) { %>
                         <%= data.summary %>
                     <% } %>
                 </div>

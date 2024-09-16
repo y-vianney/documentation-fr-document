@@ -18,32 +18,27 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* GET home page. */
+
 app.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
 app.get('/view-document', (req, res) => {
-  // console.log(Object.entries(req.body));
   const data = req.query;
-  // console.log(data)
 
-  let parsedData;
-  if (typeof data === 'string') {
-    try {
-      parsedData = JSON.parse(data);
-    } catch (e) {
-      console.error('Error parsing data:', e);
-      parsedData = data;
-    }
-  } else {
-    parsedData = data;
+  if (Object.keys(data).length === 0) {
+    console.log('No query parameters provided.');
+    res.render('book-view', { data: null });
+    return;
   }
 
-  // console.log('Data received.');
+  let parsedData = data;
 
-  res.render('book-view', { data: data });
-})
+  console.log(typeof parsedData);
+
+  res.render('book-view', { data: parsedData });
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
