@@ -3,8 +3,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const port = process.env.PORT || 3000;
 
-const indexRouter = require('./routes/index');
+// const indexRouter = require('./routes/index');
 
 const app = express();
 
@@ -18,7 +19,32 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+/* GET home page. */
+app.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+app.get('/view-document', (req, res) => {
+  // console.log(Object.entries(req.body));
+  const data = req.query;
+  console.log(data)
+
+  let parsedData;
+  if (typeof data === 'string') {
+    try {
+      parsedData = JSON.parse(data);
+    } catch (e) {
+      console.error('Error parsing data:', e);
+      parsedData = data;
+    }
+  } else {
+    parsedData = data;
+  }
+
+  // console.log('Data received.');
+
+  res.render('book-view', { data: data });
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -36,4 +62,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+// module.exports = app;
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+})

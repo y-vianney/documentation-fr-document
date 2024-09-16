@@ -7,87 +7,91 @@
     <link rel='stylesheet' href='/stylesheets/style.css'/>
 </head>
 <body>
-<div class="main">
-    <h1 class="upper font-bold">
-        <% if (data && data.title) { %>
-            <%= data.title %>
-        <% } %>
-    </h1>
-
-    <div style="display: flex; justify-content: space-between; gap: 1rem; width: 100%">
-        <div>
-            <div class="box">
-                <% if (data && data.type) { %>
-                    <div>
-                        <span>Type</span>
-                        <h4><%= data.type %></h4>
-                    </div>
-                <% } %>
-
-                <% if (data && data.author) { %>
-                    <div>
-                        <span>Auteur</span>
-                        <h4><%= data.author %></h4>
-                    </div>
-                <% } %>
-
-                <div>
-                    <span>Date de publication</span>
-                    <h4>15 Septembre 2024</h4>
-                </div>
-            </div>
-
-            <% if (data && data.link) { %>
-                <a href="<%= data.link %>" target="_blank">
-                    <button>
-                        Télécharger
-                    </button>
-                </a>
+<% if (data && data.length > 0) { %>
+    <div class="main">
+        <h1 class="upper font-bold">
+            <% if (data && data.title) { %>
+                <%= data.title %>
             <% } %>
-
-            <span>
-                <% if (data.link) { %>
-                    <a href="<%= data.link %>" class="source-link" style="display: flex; align-items: center; gap: .5rem">
-                        Source
-                        <img src="/images/link.svg" class="icon">
+        </h1>
+    
+        <div style="display: flex; justify-content: space-between; gap: 1rem; width: 100%">
+            <div>
+                <div class="box">
+                    <% if (data && data.type) { %>
+                        <div>
+                            <span>Type</span>
+                            <h4><%= data.type %></h4>
+                        </div>
+                    <% } %>
+    
+                    <% if (data && data.author) { %>
+                        <div>
+                            <span>Auteur</span>
+                            <h4><%= data.author %></h4>
+                        </div>
+                    <% } %>
+    
+                    <div>
+                        <span>Date de publication</span>
+                        <h4>15 Septembre 2024</h4>
+                    </div>
+                </div>
+    
+                <% if (data && data.link) { %>
+                    <a href="<%= data.link %>" target="_blank">
+                        <button>
+                            Télécharger
+                        </button>
                     </a>
                 <% } %>
-            </span>
-        </div>
-
-        <% if (data && data.coverImage) { %>
-            <div>
-                <img src="<%= data.coverImage %>" >
+    
+                <span>
+                    <% if (data.link) { %>
+                        <a href="<%= data.link %>" class="source-link" style="display: flex; align-items: center; gap: .5rem">
+                            Source
+                            <img src="/images/link.svg" class="icon">
+                        </a>
+                    <% } %>
+                </span>
             </div>
-        <% } %>
+    
+            <% if (data && data.coverImage) { %>
+                <div>
+                    <img src="<%= data.coverImage %>" >
+                </div>
+            <% } %>
+        </div>
+    
+        <div class="keywords" id="keywords"></div>
+    
+        <div class="container">
+            <div class="header">
+                <span id="0">Sommaire</span>
+    
+                <span id="1">Présentation</span>
+    
+                <span id="2">Fiche technique</span>
+            </div>
+    
+            <div class="content">
+                <div id="content-summary">
+                    <% if (data && data.summary) { %>
+                        <%= data.summary %>
+                    <% } %>
+                </div>
+    
+                <div id="content-presentation">
+                </div>
+    
+                <div id="content-fiche">
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="keywords" id="keywords"></div>
-
-    <div class="container">
-        <div class="header">
-            <span id="0">Sommaire</span>
-
-            <span id="1">Présentation</span>
-
-            <span id="2">Fiche technique</span>
-        </div>
-
-        <div class="content">
-            <div id="content-summary">
-                <% if (data && data.summary) { %>
-                    <%= data.summary %>
-                <% } %>
-            </div>
-
-            <div id="content-presentation">
-            </div>
-
-            <div id="content-fiche">
-            </div>
-        </div>
-    </div>
-</div>
+<% } else { %>
+    <h2>Choisissez un document pour voir ses informations.</h2>
+<% } %>
 </body>
 
 <script src="/javascripts/script.js"></script>

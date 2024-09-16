@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 router.get('/view-document', (req, res) => {
   // console.log(Object.entries(req.body));
   const data = req.query;
-  // console.log(data)
+  console.log(data)
 
   let parsedData;
   if (typeof data === 'string') {
@@ -23,7 +23,7 @@ router.get('/view-document', (req, res) => {
     parsedData = data;
   }
 
-  console.log('Data received.');
+  // console.log('Data received.');
 
   res.render('book-view', { data: data });
 })
