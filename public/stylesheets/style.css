@@ -117,6 +117,7 @@ a.source-link:hover .icon {
 
 .container .content a {
   background-color: #a6a81b54;
+  border-bottom: 1px dotted;;
 }
 
 .container .content a:hover {
@@ -183,7 +184,6 @@ p > span {
   background-color: #f5f5f5e8;
   z-index: 100;
   padding: 5px;
-  border: 1px dotted;
   font-weight: 400;
   transition: all .3s ease-in-out;
 }
