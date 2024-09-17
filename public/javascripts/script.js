@@ -3,36 +3,6 @@ const containerPresentation = document.getElementById('content-presentation');
 const containerFiche = document.getElementById('content-sheet')
 const actionButtons = document.querySelectorAll('.container .header span');
 
-actionButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        actionButtons.forEach(b => b.classList.remove('active'))
-        e.target.classList.add('active')
-        const which = button.id;
-
-        switch (which) {
-            case '0':
-                containerSummary.style.display = 'flex';
-                containerPresentation.style.display = 'none';
-                containerFiche.style.display = 'none';
-                break;
-            case '1':
-                containerSummary.style.display = 'none';
-                containerPresentation.style.display = 'flex'
-                containerFiche.style.display = 'none';
-                break;
-            case '2':
-                containerSummary.style.display = 'none';
-                containerPresentation.style.display = 'none'
-                containerFiche.style.display = 'flex';
-                break;
-            default:
-                return;
-        }
-    })
-})
-
 
 function removeAttributesAndClasses() {
     // Remove aria- and data- attributes and collapse and show classes
@@ -59,4 +29,34 @@ document.addEventListener('DOMContentLoaded', () => {
             anchor.setAttribute('target', '_blank');
         }
     });
+
+    actionButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+    
+            actionButtons.forEach(b => b.classList.remove('active'))
+            e.target.classList.add('active')
+            const which = button.id;
+    
+            switch (which) {
+                case '0':
+                    containerSummary.style.display = 'flex';
+                    containerPresentation.style.display = 'none';
+                    containerFiche.style.display = 'none';
+                    break;
+                case '1':
+                    containerSummary.style.display = 'none';
+                    containerPresentation.style.display = 'flex'
+                    containerFiche.style.display = 'none';
+                    break;
+                case '2':
+                    containerSummary.style.display = 'none';
+                    containerPresentation.style.display = 'none'
+                    containerFiche.style.display = 'flex';
+                    break;
+                default:
+                    return;
+            }
+        })
+    })
 });
