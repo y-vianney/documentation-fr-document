@@ -1,31 +1,31 @@
-const container_summary = document.getElementById('content-summary');
-const container_presentation = document.getElementById('content-presentation');
-const container_fiche = document.getElementById('content-fiche')
-const action_buttons = document.querySelectorAll('.container .header span');
+const containerSummary = document.getElementById('content-summary');
+const containerPresentation = document.getElementById('content-presentation');
+const containerFiche = document.getElementById('content-sheet')
+const actionButtons = document.querySelectorAll('.container .header span');
 
-action_buttons.forEach(button => {
+actionButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         e.preventDefault();
 
-        action_buttons.forEach(b => b.classList.remove('active'))
+        actionButtons.forEach(b => b.classList.remove('active'))
         e.target.classList.add('active')
         const which = button.id;
 
         switch (which) {
             case '0':
-                container_summary.style.display = 'flex';
-                container_presentation.style.display = 'none';
-                container_fiche.style.display = 'none';
+                containerSummary.style.display = 'flex';
+                containerPresentation.style.display = 'none';
+                containerFiche.style.display = 'none';
                 break;
             case '1':
-                container_summary.style.display = 'none';
-                container_presentation.style.display = 'flex'
-                container_fiche.style.display = 'none';
+                containerSummary.style.display = 'none';
+                containerPresentation.style.display = 'flex'
+                containerFiche.style.display = 'none';
                 break;
             case '2':
-                container_summary.style.display = 'none';
-                container_presentation.style.display = 'none'
-                container_fiche.style.display = 'flex';
+                containerSummary.style.display = 'none';
+                containerPresentation.style.display = 'none'
+                containerFiche.style.display = 'flex';
                 break;
             default:
                 return;
@@ -34,4 +34,29 @@ action_buttons.forEach(button => {
 })
 
 
-const img = document.getElementById('cover');
+function removeAttributesAndClasses() {
+    // Remove aria- and data- attributes and collapse and show classes
+    document.querySelectorAll('*').forEach(element => {
+        const attributes = Array.from(element.attributes);
+        
+        attributes.forEach(attr => {
+            if (attr.name.startsWith('aria-') || attr.name.startsWith('data-')) {
+                element.removeAttribute(attr.name);
+            }
+        });
+        
+        element.classList.remove('collapse', 'show');
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    removeAttributesAndClasses();
+
+    document.querySelectorAll('.container .content a[href]').forEach(anchor => {
+        let href = anchor.getAttribute('href');
+        if (!href.startsWith('vie-publique.fr') && href.length > 1) {
+            anchor.setAttribute('href', 'https://vie-publique.fr' + href);
+            anchor.setAttribute('target', '_blank');
+        }
+    });
+});
