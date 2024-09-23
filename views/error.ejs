@@ -1,3 +1,20 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
+<style>
+  body {
+    padding: 50px;
+    font: 15px "Inter Tight", "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+
+  h4 {
+    margin: 1rem 0;
+  }
+
+  p {
+    margin: 0;
+    line-height: 25px;
+    font-weight: 300;
+  }
+</style>
+
+<h1><%- message %></h1>
+<h2>Erreur <u><%= error.status %></u></h2>
 <pre><%= error.stack %></pre>

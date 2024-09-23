@@ -15,11 +15,12 @@ module.exports = {
         try {
             const titleToSearch = req.query['title'];
             const fileLink = req.query['link'];
+            const isPreview = req.query['type'];
             const coverImage = req.query['coverImage'];
             // console.log(titleToSearch)
 
             if (!titleToSearch || !fileLink) {
-                return res.status(400).render('error', { error: "Les paramètres 'title' et 'link' sont requis." });
+                return res.status(400).render('error', { message: "Les paramètres <i>title</i> et <i>link</i> sont requis.", error: { status: 400, stack: "" } });
             }
 
             const workbook = xlsx.readFile(DataFile);
@@ -34,14 +35,15 @@ module.exports = {
                 row['title'] = row['title'].split('.')[0];
                 row['fileLink'] = fileLink;
                 row['coverImage'] = coverImage;
+                row['isPreview'] = isPreview !== undefined;
                 req.data = row;
 
                 next();
             } else {
-                res.status(404).render('error', { error: "Aucune ligne trouvée pour ce titre." });
+                res.status(404).render('error', { message: "Aucune ligne trouvée pour ce titre.", error: { status: 404, stack: "" } });
             }
         } catch (error) {
-            res.status(500).render('error', { error: "Erreur lors de la récupération des données.", details: error.message });
+            res.status(500).render('error', { message: "Erreur lors de la récupération des données.", error });
         }
     }
 }

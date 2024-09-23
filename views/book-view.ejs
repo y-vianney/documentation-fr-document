@@ -3,17 +3,19 @@
 
 <head>
     <title>Rapport public</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 
-<body>
+<body aria-hidden="true">
     <% if (data) { %>
         <div class="main">
             <h1 class="upper font-bold">
                 <% if (data.title) { %>
                     <%= data.title %>
-                <% } %>
+                        <% } %>
             </h1>
 
             <div style="
@@ -32,48 +34,53 @@
                                     <%= data.type %>
                                 </h4>
                             </div>
-                        <% } %>
-                        <% if (data.author) { %>
-                            <div>
-                                <span>Auteur</span>
-                                <h4>
-                                    <%= data.author %>
-                                </h4>
-                            </div>
-                        <% } %>
-                        <% if (data.publishingDate) { %>
-                            <div>
-                                <span>Date de publication</span>
-                                <h4>
-                                    <%= data.publishingDate %>
-                                </h4>
-                            </div>
-                        <% } %>
+                            <% } %>
+                                <% if (data.author) { %>
+                                    <div>
+                                        <span>Auteur</span>
+                                        <h4>
+                                            <%= data.author %>
+                                        </h4>
+                                    </div>
+                                    <% } %>
+                                        <% if (data.publishingDate) { %>
+                                            <div>
+                                                <span>Date de publication</span>
+                                                <h4>
+                                                    <%= data.publishingDate %>
+                                                </h4>
+                                            </div>
+                                            <% } %>
                     </div>
 
                     <% if (data.fileLink) { %>
                         <a href="<%= data.fileLink %>" target="_blank">
                             <button>TELECHARGER</button>
                         </a>
-                    <% } %>
-
-                    <span>
-                        <% if (data.sourceLink) { %>
-                            <a href="<%= data.sourceLink %>" class="source-link"
-                                style="display: flex; align-items: center; gap: 0.5rem">
-                                Source
-                                <img src="/images/link.svg" class="icon" />
-                            </a>
                         <% } %>
-                    </span>
+
+                            <span>
+                                <% if (data.sourceLink) { %>
+                                    <a href="<%= data.sourceLink %>" class="source-link"
+                                        style="display: flex; align-items: center; gap: 0.5rem">
+                                        Source
+                                        <img src="/images/link.svg" alt="Link icon" class="icon" />
+                                    </a>
+
+                                    <% if (data.isPreview && data.isPreview===true) { %>
+                                        <span>Ce fichier n'est qu'un aperçu du rapport. Vous pouvez accéder au contenu
+                                            en consultant la source.</span>
+                                            <% } %>
+                                    <% } %>
+                            </span>
                 </div>
 
                 <% if (data.coverImage) { %>
                     <div class="img-container" style="margin: 0 auto">
-                        <img src="<%= data.coverImage %>" id="cover" width="300" height="400" />
+                        <img src="<%= data.coverImage %>" alt="Document cover" id="cover" width="300" height="400" />
                         <canvas id="canvas" style="display: none"></canvas>
                     </div>
-                <% } %>
+                    <% } %>
             </div>
 
             <div class="keywords" id="keywords"></div>
@@ -87,34 +94,35 @@
 
                 <div class="content">
                     <div id="content-summary">
-                        <% if (data.summary && data.summary !== "") { %>
+                        <% if (data.summary && data.summary !=="" ) { %>
                             <%- data.summary %>
-                        <% } else { %>
-                            <span>Aucune information.</span>
-                        <% } %>
+                                <% } else { %>
+                                    <span>Aucune information.</span>
+                                    <% } %>
                     </div>
                     <div id="content-presentation">
-                        <% if (data.presentation && data.presentation !== "") { %>
+                        <% if (data.presentation && data.presentation !=="" ) { %>
                             <%- data.presentation %>
-                        <% } else { %>
-                            <span>Aucune information.</span>
-                        <% } %>
+                                <% } else { %>
+                                    <span>Aucune information.</span>
+                                    <% } %>
                     </div>
                     <div id="content-sheet">
-                        <% if (data.sheet && data.sheet !== "") { %>
+                        <% if (data.sheet && data.sheet !=="" ) { %>
                             <%- data.sheet %>
-                        <% } else { %>
-                            <span>Aucune information.</span>
-                        <% } %>
+                                <% } else { %>
+                                    <span>Aucune information.</span>
+                                    <% } %>
                     </div>
                 </div>
             </div>
         </div>
-    <% } else { %>
-        <h2>Choisissez un document pour voir ses informations.</h2>
-    <% } %>
+        <% } else { %>
+            <h2>Choisissez un document pour voir ses informations.</h2>
+            <% } %>
 
-    <a href="https://www.flaticon.com/free-icons/register" title="register icons" hidden>Icons created by Linector - Flaticon</a>
+                <a href="https://www.flaticon.com/free-icons/register" title="register icons" hidden>Icons created by
+                    Linector - Flaticon</a>
 </body>
 
 <script src="/javascripts/script.js"></script>

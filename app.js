@@ -34,9 +34,6 @@ app.get('/view-document', getFileData, (req, res) => {
 
   let parsedData = data;
 
-  // console.log(typeof parsedData);
-  // console.log(parsedData);
-
   res.render('book-view', { data: parsedData });
 });
 
