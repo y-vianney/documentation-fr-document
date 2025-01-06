@@ -26,6 +26,8 @@ app.get('/', function(req, res) {
 app.get('/view-document', getFileData, (req, res) => {
   const data = req.data;
 
+  console.log(data);
+
   if (Object.keys(data).length === 0) {
     console.log('No query parameters provided.');
     res.render('book-view', { data: null });

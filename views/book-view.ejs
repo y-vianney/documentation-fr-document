@@ -27,11 +27,11 @@
             ">
                 <div style="max-width: 50%">
                     <div class="box">
-                        <% if (data.type) { %>
+                        <% if (data.report_type) { %>
                             <div>
                                 <span>Type</span>
                                 <h4>
-                                    <%= data.type %>
+                                    <%= data.report_type %>
                                 </h4>
                             </div>
                             <% } %>
@@ -43,25 +43,25 @@
                                         </h4>
                                     </div>
                                     <% } %>
-                                        <% if (data.publishingDate) { %>
+                                        <% if (data.publish_date) { %>
                                             <div>
                                                 <span>Date de publication</span>
                                                 <h4>
-                                                    <%= data.publishingDate %>
+                                                    <%= data.publish_date %>
                                                 </h4>
                                             </div>
                                             <% } %>
                     </div>
 
-                    <% if (data.fileLink) { %>
-                        <a href="<%= data.fileLink %>" target="_blank">
+                    <% if (data.link) { %>
+                        <a href="<%= data.link %>" target="_blank">
                             <button>TELECHARGER</button>
                         </a>
                         <% } %>
 
                             <span>
-                                <% if (data.sourceLink) { %>
-                                    <a href="<%= data.sourceLink %>" class="source-link"
+                                <% if (data.link) { %>
+                                    <a href="<%= data.link %>" class="source-link"
                                         style="display: flex; align-items: center; gap: 0.5rem">
                                         Source
                                         <img src="/images/link.svg" alt="Link icon" class="icon" />
